@@ -1,0 +1,218 @@
+:root {
+  --bg: #0c0f16;
+  --text: #e7e6e2;
+  --text-muted: #8a8d94;
+  --coral: #ff5b3c;
+  --rule: #262a33;
+  --max-width: 720px;
+  --font-display: "JetBrains Mono", monospace;
+  --font-body: "JetBrains Mono", monospace;
+  --green: #7ee08a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; font-weight: 600; }
+a { color: inherit; text-decoration: none; }
+
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 88px 24px;
+  border-top: 1px solid var(--rule);
+}
+.section_title {
+  font-size: clamp(1.3rem, 3.4vw, 1.7rem);
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--rule);
+}
+.navbar_inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar_logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.navbar_nav {
+  display: flex;
+  gap: 28px;
+}
+.navbar_nav a {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.navbar_nav a:hover,
+.navbar_nav a:focus-visible {
+  color: var(--text);
+}
+.navbar_toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.navbar_toggle span {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: var(--text);
+}
+.navbar_toggle.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.navbar_toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar_toggle.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+.profil {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 64px 24px 88px;
+}
+.profil_name {
+  font-size: clamp(2.4rem, 9vw, 4rem);
+  line-height: 1;
+  margin: 4px 0 20px;
+}
+.profil_role {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 52ch;
+  margin: 0 0 32px;
+}
+.profil_meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.profil_meta p { margin: 0; }
+.profil_meta-value {
+  color: var(--text);
+}
+.timeline_sklh_thn {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.project {
+  padding: 32px 0;
+}
+.project:first-child {
+  padding-top: 0;
+}
+.project_head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.project_head h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.project_desc {
+  color: var(--text-muted);
+  margin: 14px 0;
+  max-width: 58ch;
+}
+.footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  border-top: 1px solid var(--rule);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+@media (max-width: 720px) {
+  .navbar_toggle {
+    display: flex;
+  }
+  .navbar_nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .navbar_nav.is-open {
+    max-height: 240px;
+  }
+  .navbar_nav a {
+    padding: 16px 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .navbar {
+    position: relative;
+  }
+
+  .profil_meta {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 400px) {
+  .section,
+  .profil,
+  .footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .navbar_inner {
+    padding: 18px;
+  }
+  .profil {
+    padding-top: 88px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --max-width: 780px;
+  }
+}
